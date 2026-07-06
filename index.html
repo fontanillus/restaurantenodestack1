@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menú restaurante</title>
+  <link rel="shortcut icon" href="./assets/menu-CtziFbrx.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!--Font Awesome es una biblioteca de iconos vectoriales que se usa en sitios web. Incluye íconos de redes sociales, botones, acciones, menús, etc.-->
+  <script type="module" crossorigin src="./assets/index-CxBvCVCA.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CKCAd9TI.css">
+</head>
+<body class="relative min-h-screen font-sans text-blue-950">
+  <div aria-hidden="true" class="fixed inset-0 -z-20 bg-[url('/src/assets/img/montblanc.jpg')] bg-cover bg-center opacity-15"></div>
+  <div aria-hidden="true" class="fixed inset-0 -z-10 bg-linear-to-br from-slate-100/85 via-blue-100/80 to-cyan-100/70"></div>
+  <div class="mx-auto w-full max-w-6xl px-4 pb-10 pt-24 md:px-8 md:pt-28 lg:px-12">
+    <header>
+      <h1 class="top-strip">Restaurante Montblanc</h1>
+      <div class="panel mt-3">
+        <div class="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-5">
+          <img src="./assets/inicio-BJ3vCvED.jpg" alt="Vista del restaurante" id="imagen" class="hero-photo">
+          <img src="./assets/resturante2-CWcnjz3I.jpg" alt="Salón del restaurante" class="hero-photo">
+        </div>
+      </div>
+    </header>
+
+    <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-[minmax(260px,1fr)_minmax(280px,1fr)] md:items-start md:gap-6">
+      <aside class="panel">
+        <p class="mb-2 text-sm font-extrabold uppercase tracking-wide text-blue-800">Explora platos</p>
+        <select onchange="mostrarPlatos()" id="menu" size="4" aria-label="Seleccione un plato del menú" class="menu-select">
+        <option value="/src/assets/img/entrecot.jpg" selected>Entrecot de Ternera</option>
+        <option value="/src/assets/img/macarrones.jpg">Macarrones al pesto</option>
+        <option value="/src/assets/img/rissoto.jpg">Rissoto cremoso a la parmesana</option>
+        <option value="/src/assets/img/albondigas.jpg">Albóndigas de coliflor</option>
+      </select>
+      </aside>
+      <div id="platoPreviewPanel" class="panel flex min-h-60 items-center justify-center md:min-h-64">
+        <img id="fotoPlato" src="" alt="Foto del plato seleccionado" class="gradient-frame mx-auto h-auto max-h-[300px] w-full object-cover shadow-md">
+      </div>
+    </div>
+
+    <main>
+      <h2 class="mt-8 text-center text-2xl font-extrabold text-blue-900 md:text-4xl">Menú del día</h2>
+      <p class="mx-auto mt-2 max-w-2xl text-center text-sm font-semibold text-slate-700 md:text-base">Selecciona tu plato ideal y marca preferencias para recibir una recomendación compatible.</p>
+
+      <form id="menuForm" class="mx-auto mt-6 max-w-4xl space-y-6">
+        <fieldset class="field-box">
+          <legend class="field-legend">Por favor seleccione un plato de nuestro menú</legend>
+          <p class="space-y-2">
+            <label for="entrecot" class="block rounded-lg px-2 py-1 hover:bg-blue-100/60"><input type="radio" name="plato" value="Entrecot de ternera" id="entrecot" class="mr-2 accent-cyan-700" />Entrecot de ternera</label>
+            <label for="macarrones" class="block rounded-lg px-2 py-1 hover:bg-blue-100/60"><input type="radio" name="plato" value="Macarrones al pesto" id="macarrones" class="mr-2 accent-cyan-700" />Macarrones al pesto</label>
+            <label for="rissoto" class="block rounded-lg px-2 py-1 hover:bg-blue-100/60"><input type="radio" name="plato" value="Risotto cremoso a la parmesana" id="rissoto" class="mr-2 accent-cyan-700" />Risotto cremoso a la parmesana</label>
+            <label for="albondigas" class="block rounded-lg px-2 py-1 hover:bg-blue-100/60"><input type="radio" name="plato" value="Albóndigas de coliflor con tomate" id="albondigas" class="mr-2 accent-cyan-700" />Albóndigas de coliflor con tomate</label>
+          </p>
+        </fieldset>
+
+        <fieldset class="field-box">
+          <legend class="field-legend">Por favor indique sus preferencias e Intolerancias</legend>
+          <p class="flex flex-col gap-2 md:flex-row md:flex-wrap md:justify-center md:gap-4">
+            <label class="rounded-lg px-2 py-1 hover:bg-blue-100/60"><input type="checkbox" id="vegano" class="mr-2 accent-cyan-700" />Vegano</label>
+            <label class="rounded-lg px-2 py-1 hover:bg-blue-100/60"><input type="checkbox" id="gluten" class="mr-2 accent-cyan-700" />Intolerancia al gluten</label>
+            <label class="rounded-lg px-2 py-1 hover:bg-blue-100/60"><input type="checkbox" id="lactosa" class="mr-2 accent-cyan-700" />Intolerancia a la lactosa</label>
+          </p>
+        </fieldset>
+
+        <button type="submit" class="order-button">Ordenar</button>
+        <p id="mensaje" class="status-message"></p>
+      </form>
+    </main>
+
+    <footer class="panel mt-10">
+      <div class="flex flex-wrap justify-center gap-3 text-center text-sm font-bold md:gap-6 md:text-base lg:gap-8 lg:text-lg">
+        <span>📞 <a href="tel:+34639213155" class="text-blue-900 no-underline">+34 639 213 155</a></span>
+        <span>📧 <a href="mailto:reservas@montblancrestaurante.com" class="text-blue-900 no-underline">reservas@montblancrestaurante.com</a></span>
+        <span>📍 Carrer Sant Salvador, 123 - Barcelona, España</span>
+      </div>
+      <div class="mt-5 flex justify-center gap-4 text-2xl text-blue-900 md:gap-5 md:text-3xl lg:gap-6">
+        <a href="https://www.facebook.com/tu_pagina" target="_blank" aria-label="Facebook" rel="noopener" class="text-blue-900 transition-colors duration-300 hover:text-blue-700">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/tu_usuario" target="_blank" aria-label="Instagram" rel="noopener" class="text-blue-900 transition-colors duration-300 hover:text-blue-700">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://twitter.com/tu_usuario" target="_blank" aria-label="Twitter" rel="noopener" class="text-blue-900 transition-colors duration-300 hover:text-blue-700"><!--noopener mejorar la seguridad y el rendimiento-->
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </footer>
+  </div>
+
+</body>
+
+</html>
